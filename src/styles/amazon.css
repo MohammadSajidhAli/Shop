@@ -1,0 +1,23 @@
+.category-container {
+    width: 90%;
+    margin: auto;
+}
+.category-section {
+    margin-bottom: 40px;
+}
+
+.category-section h2 {
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+
+.category-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    justify-content: flex-start; 
+}
+

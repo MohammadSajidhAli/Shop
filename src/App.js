@@ -22,20 +22,26 @@ const App = () => {
       }, 2000);
       return;
     }
-    setCart([...cart, item]);
+  
+    
+    setCart([...cart, { ...item, amount: 1 }]);
   };
+  
 
   const handleChange = (item, d) => {
     let ind = -1;
     cart.forEach((data, index) => {
       if (data.id === item.id) ind = index;
     });
-    const tempArr = cart;
-    tempArr[ind].amount += d;
-
-    if (tempArr[ind].amount === 0) tempArr[ind].amount = 1;
-    setCart([...tempArr]);
+  
+    const tempArr = [...cart];  
+    tempArr[ind].amount += d;   
+  
+    
+    if (tempArr[ind].amount < 1) tempArr[ind].amount = 1;
+    setCart(tempArr);
   };
+  
 
   return (
     <React.Fragment>

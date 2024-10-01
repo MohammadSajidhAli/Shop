@@ -4,24 +4,28 @@ import '../styles/cart.css';
 const Cart = ({ cart, setCart, handleChange }) => {
   const [price, setPrice] = useState(0);
 
+  
   const handlePrice = () => {
-    let ans = 0;
-    cart.map((item) => (ans += (item.amount || 1) * item.price)); 
-    setPrice(ans);
+    const total = cart.reduce((acc, item) => {
+      return acc + (item.amount || 1) * item.price;
+    }, 0);
+    setPrice(total);
   };
 
+  
   const handleRemove = (id) => {
-    const arr = cart.filter((item) => item.id !== id);
-    setCart(arr);
+    const newCart = cart.filter((item) => item.id !== id);
+    setCart(newCart);
   };
 
+  
   useEffect(() => {
     handlePrice();
   }, [cart]);
 
   return (
     <article>
-      {cart?.map((item) => (
+      {cart.map((item) => (
         <div className="cart_box" key={item.id}>
           <div className="cart_img">
             <img src={item.image} alt={item.title} />
